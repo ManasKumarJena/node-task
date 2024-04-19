@@ -40,18 +40,13 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '14'
-      - name: Pull Docker image from GHCR
+      - name: Install Heroku CLI v3
         run: |
-          docker login ghcr.io -u ManasKumarJena -p ${{ secrets.GHCR_PAT }}
-          docker pull ghcr.io/actions/heroku
+          curl https://cli-assets.heroku.com/install.sh | sh
+          sudo ln -s /usr/local/heroku/bin/heroku /usr/local/bin/heroku
           
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
-
-      - name: Install Heroku CLI
-        uses: docker://ghcr.io/actions/heroku
-        with:
-          heroku-api-key: ${{ secrets.HEROKU_API_KEY }}
+      - name: Verify Heroku CLI installation
+        run: heroku --version
 
       - name: Deploy to Heroku
         run: |
