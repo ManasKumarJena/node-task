@@ -20,9 +20,11 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-
+ 
       - name: Run unit tests
         run: npm test
+      - name: listing the file
+        run: ls
 
   deploy:
     needs: test
