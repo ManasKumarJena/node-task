@@ -42,7 +42,7 @@ jobs:
           node-version: '14'
       - name: Install Heroku CLI v3
         run: |
-          curl https://cli-assets.heroku.com/install.sh | sh
+          curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
           sudo ln -s /usr/local/heroku/bin/heroku /usr/local/bin/heroku
           
       - name: Verify Heroku CLI installation
